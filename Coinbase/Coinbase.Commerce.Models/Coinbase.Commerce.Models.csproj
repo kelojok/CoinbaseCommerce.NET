@@ -15,7 +15,10 @@
     <Folder Include="Models\Converters\" />
     <Folder Include="Models\Queries\" />
     <Folder Include="Models\Thresholds\" />
-    <Folder Include="Models\Rates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>
