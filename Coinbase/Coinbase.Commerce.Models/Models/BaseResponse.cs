@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Coinbase.Commerce.Models.Models.Converters;
 using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models;
