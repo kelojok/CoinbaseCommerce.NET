@@ -7,15 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Currencies\" />
-    <Folder Include="Models\Charges\" />
-    <Folder Include="Models\Checkouts\" />
-    <Folder Include="Models\Invoices\" />
-    <Folder Include="Models\Events\" />
-    <Folder Include="Models\Converters\" />
-    <Folder Include="Models\Queries\" />
-    <Folder Include="Models\Thresholds\" />
-    <Folder Include="Models\Rates\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>
