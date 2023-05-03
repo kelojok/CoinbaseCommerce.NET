@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Converters\" />
-    <Folder Include="Interfaces\Charges\" />
-    <Folder Include="Interfaces\Checkouts\" />
-    <Folder Include="Interfaces\Events\" />
-    <Folder Include="Interfaces\Invoices\" />
-    <Folder Include="Interfaces\Common\" />
+    <PackageReference Include="Refit" Version="6.3.2" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Coinbase.Commerce.Models\Coinbase.Commerce.Models.csproj" />
   </ItemGroup>
 
 </Project>
