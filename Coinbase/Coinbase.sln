@@ -5,7 +5,13 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coinbase.Commerce.Models", "Coinbase.Commerce.Models\Coinbase.Commerce.Models.csproj", "{A4299188-48D3-4F34-BA2E-973F2DB43142}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coinbase.Commerce.Clients", "Coinbase.Commerce.Clients\Coinbase.Commerce.Clients.csproj", "{C1FEE299-BBC2-49E1-97DA-A75CF0748F6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coinbase.Commerce.Clients", "Coinbase.Commerce.Clients\Coinbase.Commerce.Clients.csproj", "{C1FEE299-BBC2-49E1-97DA-A75CF0748F6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ACDF23E3-35E8-43C9-86C2-F019F3BE7280}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coinbase.Commerce.Clients.Tests", "Coinbase.Commerce.Clients.Tests\Coinbase.Commerce.Clients.Tests.csproj", "{1CED5F5A-2BAB-48D6-B850-D13DF526CC0A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coinbase.Commerce.Api", "Coinbase.Commerce.Api\Coinbase.Commerce.Api.csproj", "{E940891F-27B5-4820-B308-F2ED4389A1E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +27,20 @@ Global
 		{C1FEE299-BBC2-49E1-97DA-A75CF0748F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1FEE299-BBC2-49E1-97DA-A75CF0748F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1FEE299-BBC2-49E1-97DA-A75CF0748F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CED5F5A-2BAB-48D6-B850-D13DF526CC0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CED5F5A-2BAB-48D6-B850-D13DF526CC0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CED5F5A-2BAB-48D6-B850-D13DF526CC0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CED5F5A-2BAB-48D6-B850-D13DF526CC0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E940891F-27B5-4820-B308-F2ED4389A1E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E940891F-27B5-4820-B308-F2ED4389A1E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E940891F-27B5-4820-B308-F2ED4389A1E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E940891F-27B5-4820-B308-F2ED4389A1E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1CED5F5A-2BAB-48D6-B850-D13DF526CC0A} = {ACDF23E3-35E8-43C9-86C2-F019F3BE7280}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B909909-3433-4448-BA06-917301F57D47}
