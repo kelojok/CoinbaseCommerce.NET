@@ -15,3 +15,19 @@ public class EventClientTests : IClassFixture<WebApplicationFactory<Program>>
         _factory = factory;
         _eventClient = _factory.Services.GetService<ICoinbaseCommerceEventClient>();
     }
+
+    [Fact]
+    public async Task ListEventsAsync_ReturnsSuccessfulResponseWithEventsInfo()
+    {
+        var response = await _eventClient.ListEventsAsync();
+
+        Assert.NotNull(response.Content?.Data);
+        Assert.True(response.IsSuccessStatusCode);
+    }
+
+    [Fact]
+    public async Task ShowEventAsync_ReturnsSuccessfulResponseWithEventInfo()
+    {
+        var response = await _eventClient.ShowEventAsync("402e730d-78fe-4a1e-8691-1acfadec3c32");
+    }
+}
