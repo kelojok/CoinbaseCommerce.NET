@@ -1,4 +1,4 @@
 ﻿namespace Coinbase.Commerce.Models.Models.Invoices;
 
-public record CoinbaseCommerceInvoiceResponse(List<Data>? Data, MetaData Metadata, Pagination? Pagination)
-    : BaseResponse(Data, Metadata, Pagination);
+public record CoinbaseCommerceInvoiceResponse<T>(T? Data, MetaData? Metadata, Pagination? Pagination)
+    : BaseResponse<T>(Data, Metadata, Pagination);

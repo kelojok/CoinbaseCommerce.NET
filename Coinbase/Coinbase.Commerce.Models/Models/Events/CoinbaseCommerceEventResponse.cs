@@ -1,5 +1,4 @@
 ﻿namespace Coinbase.Commerce.Models.Models.Events;
 
-public record CoinbaseCommerceEventResponse
-    (List<Data>? Data, MetaData Metadata, Pagination? Pagination)
-    : BaseResponse(Data, Metadata, Pagination);
+public record CoinbaseCommerceEventResponse<T>(T? Data, MetaData? Metadata, Pagination? Pagination)
+    : BaseResponse<T>(Data, Metadata, Pagination);
