@@ -1,10 +1,27 @@
-﻿using Coinbase.Commerce.Models.Models.Checkouts;
+﻿using Coinbase.Commerce.Models.Models;
+using Coinbase.Commerce.Models.Models.Checkouts;
 using Refit;
 
 namespace Coinbase.Commerce.Clients.Interfaces.Checkouts;
 
-public interface ICoinbaseCommerceCheckoutClient : ICoinbaseCommerceApi<ApiResponse<CoinbaseCommerceCheckoutResponse>>
+public interface ICoinbaseCommerceCheckoutClient
 {
+    /// <summary>
+    /// Shows a Coinbase Commerce-hosted payment (checkout) page
+    /// </summary>
+    /// <param name="checkoutId">The checkout id</param>
+    /// <returns></returns>
+    [Get("/checkouts/{checkoutId}")]
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<CheckoutData>>> ShowCheckoutAsync(string checkoutId);
+
+    /// <summary>
+    /// Lists all Coinbase Commerce-hosted payment (checkout) pages
+    /// </summary>
+    /// <returns></returns>
+    [Get("/checkouts/")]
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<List<CheckoutData>>>> ListCheckoutsAsync();
+
+
     /// <summary>
     ///     Create and customize a Coinbase Commerce-hosted payment (checkout) page
     /// </summary>
@@ -13,8 +30,7 @@ public interface ICoinbaseCommerceCheckoutClient : ICoinbaseCommerceApi<ApiRespo
     /// <returns>Details of the created checkout</returns>
     [Headers("Content-Type: application/json")]
     [Post("/checkouts")]
-    Task<ApiResponse<CoinbaseCommerceCheckoutResponse>> CreateCheckoutAsync(string transactionType,
-        [Body] CoinbaseCommerceCheckoutRequest request);
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<CheckoutData>>> CreateCheckoutAsync([Body] CoinbaseCommerceCheckoutRequest request);
 
     /// <summary>
     ///     Update a Coinbase Commerce-hosted payment (checkout) page
@@ -22,7 +38,7 @@ public interface ICoinbaseCommerceCheckoutClient : ICoinbaseCommerceApi<ApiRespo
     /// <param name="checkoutId">The checkout id</param>
     /// <returns>Details of the updated checkout</returns>
     [Put("/checkouts/{checkoutId}")]
-    Task<ApiResponse<CoinbaseCommerceCheckoutResponse>> UpdateCheckoutAsync(string checkoutId);
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<CheckoutData>>> UpdateCheckoutAsync(string checkoutId);
 
     /// <summary>
     ///     Delete a Coinbase Commerce-hosted payment (checkout) page
