@@ -1,3 +1,4 @@
+using Coinbase.Commerce.Clients.Extensions;
 using Coinbase.Commerce.Clients.Handlers;
 using Coinbase.Commerce.Clients.Interfaces.Charges;
 using Coinbase.Commerce.Clients.Interfaces.Checkouts;
@@ -9,6 +10,7 @@ namespace Coinbase.Commerce.Api
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -19,19 +21,7 @@ namespace Coinbase.Commerce.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddTransient<AuthHeaderHandler>();
-            builder.Services.AddRefitClient<ICoinbaseCommerceChargeClient>()
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.commerce.coinbase.com"))
-                .AddHttpMessageHandler<AuthHeaderHandler>();
-            builder.Services.AddRefitClient<ICoinbaseCommerceCheckoutClient>()
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.commerce.coinbase.com"))
-                .AddHttpMessageHandler<AuthHeaderHandler>();
-            builder.Services.AddRefitClient<ICoinbaseCommerceInvoiceClient>()
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.commerce.coinbase.com"))
-                .AddHttpMessageHandler<AuthHeaderHandler>();
-            builder.Services.AddRefitClient<ICoinbaseCommerceEventClient>()
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.commerce.coinbase.com"))
-                .AddHttpMessageHandler<AuthHeaderHandler>();
+            builder.Services.AddCoinbaseCommerceClients(builder.Configuration.GetSection("CoinbaseCommerceSettings"));
 
             var app = builder.Build();
 
