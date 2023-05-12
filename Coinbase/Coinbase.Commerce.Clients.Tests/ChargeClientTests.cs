@@ -3,6 +3,7 @@ using Coinbase.Commerce.Api;
 using Coinbase.Commerce.Clients.Interfaces.Charges;
 using Coinbase.Commerce.Models.Models;
 using Coinbase.Commerce.Models.Models.Charges;
+using Coinbase.Commerce.Models.Models.Statuses;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -54,7 +55,7 @@ public class ChargeClientTests : IClassFixture<WebApplicationFactory<Program>>
 
         Assert.NotNull(cancelChargeResponse.Content?.Data);
         Assert.True(cancelChargeResponse.IsSuccessStatusCode);
-        Assert.True(cancelChargeResponse.Content.Data.Timeline.Any(x => x.Status == "CANCELED"));
+        Assert.Contains(cancelChargeResponse.Content.Data.Timeline, x => x.Status == TransactionStatuses.Canceled);
     }
 
     [Fact]
