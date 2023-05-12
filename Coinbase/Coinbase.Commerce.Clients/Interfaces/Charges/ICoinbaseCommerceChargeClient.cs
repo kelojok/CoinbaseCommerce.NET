@@ -1,20 +1,35 @@
-﻿using Coinbase.Commerce.Models.Models.Charges;
+﻿using Coinbase.Commerce.Models.Models;
+using Coinbase.Commerce.Models.Models.Charges;
 using Refit;
 
 namespace Coinbase.Commerce.Clients.Interfaces.Charges;
 
-public interface ICoinbaseCommerceChargeClient : ICoinbaseCommerceApi<ApiResponse<CoinbaseCommerceChargeResponse>>
+public interface ICoinbaseCommerceChargeClient
 {
+
+    /// <summary>
+    /// Shows a charge
+    /// </summary>
+    /// <param name="id">The identifier</param>
+    /// <returns></returns>
+    [Get("/charges/{id}")]
+    Task<ApiResponse<CoinbaseCommerceChargeResponse<ChargeData>>> ShowChargeAsync(string id);
+
+    /// <summary>
+    /// Shows a list of all charges
+    /// </summary>
+    /// <returns></returns>
+    [Get("/charges/")]
+    Task<ApiResponse<CoinbaseCommerceChargeResponse<List<ChargeData>>>> ListChargesAsync();
+
     /// <summary>
     ///     A charge represents a specific payment attempt and contains information such as the amount paid, currency and
     ///     status.
     /// </summary>
-    /// <param name="transactionType">Charge, checkout, invoice or event. Helps set correct URL</param>
     /// <param name="request">The object that the API will process</param>
     /// <returns>Details of the charge</returns>
-    [Post("/{transactionType}")]
-    Task<ApiResponse<CoinbaseCommerceChargeResponse>> CreateChargeAsync(string transactionType,
-        [Body] CoinbaseCommerceChargeRequest request);
+    [Post("/charges")]
+    Task<ApiResponse<CoinbaseCommerceChargeResponse<ChargeData>>> CreateChargeAsync([Body] CoinbaseCommerceChargeRequest request);
 
 
     /// <summary>
@@ -24,7 +39,7 @@ public interface ICoinbaseCommerceChargeClient : ICoinbaseCommerceApi<ApiRespons
     /// <param name="chargeId">Code or ID of charge</param>
     /// <returns>Details of the cancellation</returns>
     [Post("/charges/{chargeId}/cancel")]
-    Task<ApiResponse<CoinbaseCommerceChargeResponse>> CancelChargeAsync(string chargeId);
+    Task<ApiResponse<CoinbaseCommerceChargeResponse<ChargeData>>> CancelChargeAsync(string chargeId);
 
     /// <summary>
     ///     Resolves a charge that has been previously marked as unresolved.
@@ -32,5 +47,5 @@ public interface ICoinbaseCommerceChargeClient : ICoinbaseCommerceApi<ApiRespons
     /// <param name="chargeId">Code or ID of charge</param>
     /// <returns>Details of the resolve</returns>
     [Post("/charges/{chargeId}/resolve")]
-    Task<CoinbaseCommerceChargeResponse> ResolveChargeAsync(string chargeId);
+    Task<CoinbaseCommerceChargeResponse<ChargeData>> ResolveChargeAsync(string chargeId);
 }
