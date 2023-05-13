@@ -7,4 +7,6 @@ public class ApiSettings
     public string ApiVersion { get; set; }
 
     public string ApiBaseUrl { get; set; }
+
+    public string WebhookSecret { get; set; }
 }

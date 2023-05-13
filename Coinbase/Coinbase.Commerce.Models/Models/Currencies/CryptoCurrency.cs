@@ -5,8 +5,7 @@ namespace Coinbase.Commerce.Models.Models.Currencies;
 
 public record CryptoCurrency
 (
-    [property: JsonProperty("amount")] [property: JsonPropertyName("amount")]
-    string Amount,
-    [property: JsonProperty("currency")] [property: JsonPropertyName("currency")]
-    string Currency
+    [property: JsonPropertyName("amount")] string Amount,
+
+    [property: JsonPropertyName("currency")] string Currency
 );
