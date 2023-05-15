@@ -1,5 +1,6 @@
 ﻿using Coinbase.Commerce.Models.Models;
 using Coinbase.Commerce.Models.Models.Charges;
+using Coinbase.Commerce.Models.Models.Queries;
 using Refit;
 
 namespace Coinbase.Commerce.Clients.Interfaces.Charges;
@@ -20,7 +21,7 @@ public interface ICoinbaseCommerceChargeClient
     /// </summary>
     /// <returns></returns>
     [Get("/charges/")]
-    Task<ApiResponse<CoinbaseCommerceChargeResponse<List<ChargeData>>>> ListChargesAsync();
+    Task<ApiResponse<CoinbaseCommerceChargeResponse<List<ChargeData>>>> ListChargesAsync([Query] BaseQueryOptions? options = null);
 
     /// <summary>
     ///     A charge represents a specific payment attempt and contains information such as the amount paid, currency and
