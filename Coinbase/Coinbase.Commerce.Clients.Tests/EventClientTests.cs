@@ -1,5 +1,8 @@
-﻿using Coinbase.Commerce.Api;
+﻿using System.Net;
+using Coinbase.Commerce.Api;
+using Coinbase.Commerce.Clients.Interfaces.Charges;
 using Coinbase.Commerce.Clients.Interfaces.Events;
+using Coinbase.Commerce.Models.Models.Queries;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,8 +29,47 @@ public class EventClientTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
+    public async Task ListEventsAsync_ReturnsSuccessfulResponseWithEmptyData()
+    {
+        var paginationEnd = false;
+        var eventsResponse = await _eventClient.ListEventsAsync(new BaseQueryOptions
+        {
+            Limit = 100
+        });
+
+
+        while (!paginationEnd)
+            if (eventsResponse.Content?.Pagination?.NextUri == null)
+                paginationEnd = true;
+            else
+                eventsResponse = await _eventClient.ListEventsAsync(new BaseQueryOptions
+                {
+                    Limit = 100,
+                    StartingAfter = eventsResponse.Content.Pagination.CursorRange.LastOrDefault()
+                });
+
+        Assert.Equal(eventsResponse.Content.Data.Capacity, 0);
+        Assert.Equal(eventsResponse.Content.Pagination.Yielded, 0);
+        Assert.True(eventsResponse.IsSuccessStatusCode);
+    }
+
+    [Fact]
     public async Task ShowEventAsync_ReturnsSuccessfulResponseWithEventInfo()
     {
-        var response = await _eventClient.ShowEventAsync("402e730d-78fe-4a1e-8691-1acfadec3c32");
+        var eventsResponse = await _eventClient.ListEventsAsync();
+
+        var eventResponse = await _eventClient.ShowEventAsync(eventsResponse.Content.Data.FirstOrDefault().Id);
+
+        Assert.NotNull(eventResponse.Content?.Data);
+        Assert.True(eventResponse.IsSuccessStatusCode);
+    }
+
+    [Fact]
+    public async Task ShowEventAsync_ReturnsUnsuccessfulResponseIfEventDoesNotExist()
+    {
+        var eventResponse = await _eventClient.ShowEventAsync("50FBA097-AC51-488A-AACE-04638944BE0B");
+
+        Assert.Null(eventResponse.Content?.Data);
+        Assert.True(eventResponse.StatusCode == HttpStatusCode.NotFound);
     }
 }
