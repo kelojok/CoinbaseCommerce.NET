@@ -8,7 +8,7 @@ public record CoinbaseCommerceChargeRequest(
 
     [property: JsonPropertyName("description")] string Description,
 
-    [property: JsonPropertyName("pricing_type")] string PricingType,
+    [property: JsonPropertyName("pricing_type")] PricingType PricingType,
 
     [property: JsonPropertyName("local_price")] LocalPrice LocalPrice,
 

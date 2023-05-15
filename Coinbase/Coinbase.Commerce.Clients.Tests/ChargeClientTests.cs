@@ -74,7 +74,7 @@ public class ChargeClientTests : IClassFixture<WebApplicationFactory<Program>>
         return new CoinbaseCommerceChargeRequest(
             "Test charge name",
             "Test charge for integration purposes",
-            "fixed_price",
+            PricingType.FixedPrice,
             new LocalPrice("USD", "150.00"),
             new MetaData("12345", "John Doe"),
             "https://example.com/success",
@@ -87,7 +87,7 @@ public class ChargeClientTests : IClassFixture<WebApplicationFactory<Program>>
         return new CoinbaseCommerceChargeRequest(
             "Test charge name",
             "Test charge for integration purposes",
-            "error price",
+            PricingType.None,
             new LocalPrice("ERROR", "150.00"),
             new MetaData("12345", "John Doe"),
             "https://example.com/success",
