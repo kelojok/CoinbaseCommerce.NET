@@ -1,5 +1,4 @@
 ﻿using Coinbase.Commerce.Models.Models.Rates;
-using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 using Coinbase.Commerce.Models.Models.Thresholds;
 
@@ -52,7 +51,7 @@ namespace Coinbase.Commerce.Models.Models
 
     [property: JsonPropertyName("pricing")] Pricing Pricing,
 
-    [property: JsonPropertyName("pricing_type")] string PricingType,
+    [property: JsonPropertyName("pricing_type")] PricingType PricingType,
 
     [property: JsonPropertyName("pwcb_only")] bool? PwcbOnly,
 

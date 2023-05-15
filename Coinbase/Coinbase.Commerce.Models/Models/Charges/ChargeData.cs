@@ -46,7 +46,7 @@ namespace Coinbase.Commerce.Models.Models.Charges
 
         [property: JsonPropertyName("pricing")] Pricing Pricing,
 
-        [property: JsonPropertyName("pricing_type")] string PricingType,
+        [property: JsonPropertyName("pricing_type")] PricingType PricingType,
 
         [property: JsonPropertyName("pwcb_only")] bool? PwcbOnly,
 

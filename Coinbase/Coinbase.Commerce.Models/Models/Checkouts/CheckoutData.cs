@@ -13,7 +13,7 @@ namespace Coinbase.Commerce.Models.Models.Checkouts
 
         [property: JsonPropertyName("organization_name")] string OrganizationName,
 
-        [property: JsonPropertyName("pricing_type")] string PricingType,
+        [property: JsonPropertyName("pricing_type")] PricingType PricingType,
 
         [property: JsonPropertyName("requested_info")] IReadOnlyList<string> RequestedInfo,
 
