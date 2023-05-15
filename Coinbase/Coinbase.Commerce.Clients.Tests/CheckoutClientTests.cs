@@ -74,7 +74,7 @@ public class CheckoutClientTests : IClassFixture<WebApplicationFactory<Program>>
 
         Assert.True(showCheckoutResponse.StatusCode == HttpStatusCode.NotFound);
         Assert.NotNull(showCheckoutResponse.Error);
-        Assert.Null(showCheckoutResponse.Content.Data);
+        Assert.Null(showCheckoutResponse.Content?.Data);
     }
 
     [Fact]
