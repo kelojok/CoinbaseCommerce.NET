@@ -44,15 +44,32 @@ public class CheckoutClientTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
-    public async Task DeleteCheckoutAsync_ReturnsCanceledResponse()
+    public async Task DeleteCheckoutAsync_ReturnsSuccessfulEmptyResponse()
     {
         var checkoutRequest = CreateDummyCheckoutRequest();
 
         var response = await _checkoutClient.CreateCheckoutAsync(checkoutRequest);
 
-        var cancelResponse = await _checkoutClient.DeleteCheckoutAsync(response.Content?.Data?.Id);
+        var deleteCheckoutResponse = await _checkoutClient.DeleteCheckoutAsync(response.Content?.Data?.Id);
 
-        Assert.True(cancelResponse.IsSuccessStatusCode);
+        Assert.True(deleteCheckoutResponse.IsSuccessStatusCode);
+    }
+
+    [Fact]
+    public async Task UpdateCheckoutAsync_ReturnsSuccessfulResponseWithUpdatedCheckoutInfo()
+    {
+        var updatedCheckoutName = "My Updated Checkout";
+
+        var checkoutRequest = CreateDummyCheckoutRequest();
+
+        var response = await _checkoutClient.CreateCheckoutAsync(checkoutRequest);
+
+        checkoutRequest.Name = updatedCheckoutName;
+
+        var updateCheckoutResponse = await _checkoutClient.UpdateCheckoutAsync(response.Content?.Data?.Id, checkoutRequest);
+
+        Assert.True(updateCheckoutResponse.IsSuccessStatusCode);
+        Assert.Equal(updateCheckoutResponse.Content?.Data?.Name, updatedCheckoutName);
     }
 
     [Fact]
@@ -88,21 +105,25 @@ public class CheckoutClientTests : IClassFixture<WebApplicationFactory<Program>>
 
     private static CoinbaseCommerceCheckoutRequest CreateDummyCheckoutRequest()
     {
-        return new CoinbaseCommerceCheckoutRequest(
-            "Checkout name",
-            "Checkout description",
-            new List<string> { "name" },
-            PricingType.FixedPrice,
-            new LocalPrice("USD", "150.00"));
+        return new CoinbaseCommerceCheckoutRequest
+        {
+            Name = "Checkout name",
+            Description = "Checkout description",
+            RequestedInfo = new List<string> { "name" },
+            PricingType = PricingType.FixedPrice,
+            LocalPrice = new LocalPrice("USD", "150.00")
+        };
     }
 
     private static CoinbaseCommerceCheckoutRequest CreateDummyErrorCheckoutRequest()
     {
-        return new CoinbaseCommerceCheckoutRequest(
-            "Checkout name",
-            "Checkout description",
-            new List<string> { "name" },
-            PricingType.None,
-            new LocalPrice("USD", "150.00"));
+        return new CoinbaseCommerceCheckoutRequest
+        {
+            Name = "Checkout name",
+            Description = "Checkout description",
+            RequestedInfo = new List<string> { "name" },
+            PricingType = PricingType.None,
+            LocalPrice = new LocalPrice("USD", "150.00")
+        };
     }
 }

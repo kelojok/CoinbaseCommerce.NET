@@ -3,20 +3,29 @@ using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models.Charges;
 
-public record CoinbaseCommerceChargeRequest(
-    [property: JsonProperty("name")] string Name,
+public class CoinbaseCommerceChargeRequest
+{
+    [JsonProperty("name")]
+    public string Name { get; set; }
 
-    [property: JsonProperty("description")] string Description,
+    [JsonProperty("description")]
+    public string Description { get; set; }
 
-    [property: JsonProperty("pricing_type")] PricingType PricingType,
+    [JsonProperty("pricing_type")]
+    public PricingType PricingType { get; set; }
 
-    [property: JsonProperty("local_price")] LocalPrice LocalPrice,
+    [JsonProperty("local_price")]
+    public LocalPrice LocalPrice { get; set; }
 
-    [property: JsonProperty("metadata")] MetaData Metadata,
+    [JsonProperty("metadata")]
+    public MetaData Metadata { get; set; }
 
-    [property: JsonProperty("redirect_url")] string RedirectUrl,
+    [JsonProperty("redirect_url")]
+    public string RedirectUrl { get; set; }
 
-    [property: JsonProperty("cancel_url")] string CancelUrl,
+    [JsonProperty("cancel_url")]
+    public string CancelUrl { get; set; }
 
-    [property: JsonProperty("requested_info")] List<string> RequestedInfo
-);
+    [JsonProperty("requested_info")]
+    public List<string> RequestedInfo { get; set; }
+}

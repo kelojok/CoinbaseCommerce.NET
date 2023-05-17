@@ -2,14 +2,20 @@
 
 namespace Coinbase.Commerce.Models.Models.Checkouts;
 
-public record CoinbaseCommerceCheckoutRequest(
-    [property: JsonProperty("name")] string Name,
+public class CoinbaseCommerceCheckoutRequest
+{
+    [JsonProperty("name")]
+    public string Name { get; set; }
 
-    [property: JsonProperty("description")] string Description,
+    [JsonProperty("description")]
+    public string Description { get; set; }
 
-    [property: JsonProperty("requested_info")] IReadOnlyList<string>? RequestedInfo,
+    [JsonProperty("requested_info")]
+    public IReadOnlyList<string>? RequestedInfo { get; set; }
 
-    [property: JsonProperty("pricing_type")] PricingType PricingType,
+    [JsonProperty("pricing_type")]
+    public PricingType PricingType { get; set; }
 
-    [property: JsonProperty("local_price")] LocalPrice LocalPrice
-);
+    [JsonProperty("local_price")]
+    public LocalPrice LocalPrice { get; set; }
+}

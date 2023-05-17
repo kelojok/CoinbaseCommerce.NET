@@ -2,14 +2,20 @@
 
 namespace Coinbase.Commerce.Models.Models.Invoices;
 
-public record CoinbaseCommerceInvoiceRequest(
-    [property: JsonProperty("business_name")] string BusinessName,
+public class CoinbaseCommerceInvoiceRequest
+{
+    [JsonProperty("business_name")]
+    public string BusinessName { get; set; }
 
-    [property: JsonProperty("customer_email")] string CustomerEmail,
+    [JsonProperty("customer_email")]
+    public string CustomerEmail { get; set; }
 
-    [property: JsonProperty("customer_name")] string CustomerName,
+    [JsonProperty("customer_name")]
+    public string CustomerName { get; set; }
 
-    [property: JsonProperty("memo")] string Memo,
+    [JsonProperty("memo")]
+    public string Memo { get; set; }
 
-    [property: JsonProperty("local_price")] LocalPrice LocalPrice
-);
+    [JsonProperty("local_price")]
+    public LocalPrice LocalPrice { get; set; }
+}

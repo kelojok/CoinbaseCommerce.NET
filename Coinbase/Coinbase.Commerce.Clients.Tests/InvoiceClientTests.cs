@@ -103,29 +103,25 @@ public class InvoiceClientTests : IClassFixture<WebApplicationFactory<Program>>
 
     private static CoinbaseCommerceInvoiceRequest CreateDummyInvoiceRequest()
     {
-        return new CoinbaseCommerceInvoiceRequest(
-            "My business name",
-            "Customer_email@test.com",
-            "John Doe",
-            "memo",
-            new LocalPrice(
-                "USD",
-                "150"
-            )
-        );
+        return new CoinbaseCommerceInvoiceRequest
+        {
+            BusinessName = "My business name",
+            CustomerEmail = "Customer_email@test.com",
+            CustomerName = "John Doe",
+            Memo = "memo",
+            LocalPrice = new LocalPrice("USD", "150")
+        };
     }
 
     private static CoinbaseCommerceInvoiceRequest CreateDummyErrorInvoiceRequest()
     {
-        return new CoinbaseCommerceInvoiceRequest(
-            "My business name",
-            "Customer_email@test.com",
-            "John Doe",
-            "memo",
-            new LocalPrice(
-                "error",
-                "150"
-            )
-        );
+        return new CoinbaseCommerceInvoiceRequest
+        {
+            BusinessName = "My business name",
+            CustomerEmail = "Customer_email@test.com",
+            CustomerName = "John Doe",
+            Memo = "memo",
+            LocalPrice = new LocalPrice("Error", "150")
+        };
     }
 }

@@ -71,27 +71,31 @@ public class ChargeClientTests : IClassFixture<WebApplicationFactory<Program>>
 
     private static CoinbaseCommerceChargeRequest CreateDummyChargeRequest()
     {
-        return new CoinbaseCommerceChargeRequest(
-            "Test charge name",
-            "Test charge for integration purposes",
-            PricingType.FixedPrice,
-            new LocalPrice("USD", "150.00"),
-            new MetaData("12345", "John Doe"),
-            "https://example.com/success",
-            "https://example.com/cancel",
-            new List<string> { "name", "email" });
+        return new CoinbaseCommerceChargeRequest
+        {
+            Name = "Test charge name",
+            Description = "Test charge for integration purposes",
+            PricingType = PricingType.FixedPrice,
+            LocalPrice = new LocalPrice("USD", "150.00"),
+            Metadata = new MetaData("12345", "John Doe"),
+            RedirectUrl = "https://example.com/success",
+            CancelUrl = "https://example.com/cancel",
+            RequestedInfo = new List<string> { "name", "email" }
+        };
     }
 
     private static CoinbaseCommerceChargeRequest CreateDummyErrorChargeRequest()
     {
-        return new CoinbaseCommerceChargeRequest(
-            "Test charge name",
-            "Test charge for integration purposes",
-            PricingType.None,
-            new LocalPrice("ERROR", "150.00"),
-            new MetaData("12345", "John Doe"),
-            "https://example.com/success",
-            "https://example.com/cancel",
-            new List<string> { "name", "email" });
+        return new CoinbaseCommerceChargeRequest
+        {
+            Name = "Test charge name",
+            Description = "Test charge for integration purposes",
+            PricingType = PricingType.None,
+            LocalPrice = new LocalPrice("ERROR", "150.00"),
+            Metadata = new MetaData("12345", "John Doe"),
+            RedirectUrl = "https://example.com/success",
+            CancelUrl = "https://example.com/cancel",
+            RequestedInfo = new List<string> { "name", "email" }
+        };
     }
 }
