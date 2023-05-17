@@ -44,15 +44,32 @@ public class CheckoutClientTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
-    public async Task DeleteCheckoutAsync_ReturnsCanceledResponse()
+    public async Task DeleteCheckoutAsync_ReturnsSuccessfulEmptyResponse()
     {
         var checkoutRequest = CreateDummyCheckoutRequest();
 
         var response = await _checkoutClient.CreateCheckoutAsync(checkoutRequest);
 
-        var cancelResponse = await _checkoutClient.DeleteCheckoutAsync(response.Content?.Data?.Id);
+        var deleteCheckoutResponse = await _checkoutClient.DeleteCheckoutAsync(response.Content?.Data?.Id);
 
-        Assert.True(cancelResponse.IsSuccessStatusCode);
+        Assert.True(deleteCheckoutResponse.IsSuccessStatusCode);
+    }
+
+    [Fact]
+    public async Task UpdateCheckoutAsync_ReturnsSuccessfulResponseWithUpdatedCheckoutInfo()
+    {
+        var updatedCheckoutName = "My Updated Checkout";
+
+        var checkoutRequest = CreateDummyCheckoutRequest();
+
+        var response = await _checkoutClient.CreateCheckoutAsync(checkoutRequest);
+
+        checkoutRequest.Name = updatedCheckoutName;
+
+        var updateCheckoutResponse = await _checkoutClient.UpdateCheckoutAsync(response.Content?.Data?.Id, checkoutRequest);
+
+        Assert.True(updateCheckoutResponse.IsSuccessStatusCode);
+        Assert.Equal(updateCheckoutResponse.Content?.Data?.Name, updatedCheckoutName);
     }
 
     [Fact]
