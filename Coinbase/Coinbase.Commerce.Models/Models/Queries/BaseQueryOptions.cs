@@ -1,18 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using Refit;
 
 namespace Coinbase.Commerce.Models.Models.Queries;
 
 public class BaseQueryOptions
 {
-    [JsonProperty("limit")]
+    [AliasAs("limit")]
     public int? Limit { get; set; } = 25;
 
-    [JsonProperty("starting_after")]
+    [AliasAs("starting_after")]
     public string? StartingAfter { get; set; }
 
-    [JsonProperty("ending_after")]
+    [AliasAs("ending_after")]
     public string? EndingBefore { get; set; }
 
-    [JsonProperty("order")]
+    [AliasAs("order")]
     public string? Order { get; set; } = "desc";
 }
