@@ -98,7 +98,7 @@ public class InvoiceClientTests : IClassFixture<WebApplicationFactory<Program>>
     {
         var voidInvoiceResponse = await _invoiceClient.VoidInvoiceAsync("123456");
 
-        Assert.True(voidInvoiceResponse.IsSuccessStatusCode);
+        Assert.True(voidInvoiceResponse.StatusCode == HttpStatusCode.NotFound);
     }
 
     private static CoinbaseCommerceInvoiceRequest CreateDummyInvoiceRequest()
