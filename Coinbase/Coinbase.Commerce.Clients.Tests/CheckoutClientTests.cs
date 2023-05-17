@@ -88,21 +88,25 @@ public class CheckoutClientTests : IClassFixture<WebApplicationFactory<Program>>
 
     private static CoinbaseCommerceCheckoutRequest CreateDummyCheckoutRequest()
     {
-        return new CoinbaseCommerceCheckoutRequest(
-            "Checkout name",
-            "Checkout description",
-            new List<string> { "name" },
-            PricingType.FixedPrice,
-            new LocalPrice("USD", "150.00"));
+        return new CoinbaseCommerceCheckoutRequest
+        {
+            Name = "Checkout name",
+            Description = "Checkout description",
+            RequestedInfo = new List<string> { "name" },
+            PricingType = PricingType.FixedPrice,
+            LocalPrice = new LocalPrice("USD", "150.00")
+        };
     }
 
     private static CoinbaseCommerceCheckoutRequest CreateDummyErrorCheckoutRequest()
     {
-        return new CoinbaseCommerceCheckoutRequest(
-            "Checkout name",
-            "Checkout description",
-            new List<string> { "name" },
-            PricingType.None,
-            new LocalPrice("USD", "150.00"));
+        return new CoinbaseCommerceCheckoutRequest
+        {
+            Name = "Checkout name",
+            Description = "Checkout description",
+            RequestedInfo = new List<string> { "name" },
+            PricingType = PricingType.None,
+            LocalPrice = new LocalPrice("USD", "150.00")
+        };
     }
 }
