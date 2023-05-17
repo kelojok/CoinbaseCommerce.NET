@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+	<PropertyGroup>
+		<ExposeInternalTypes>true</ExposeInternalTypes>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Refit.Newtonsoft.Json" Version="6.3.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Coinbase.Commerce.Clients\Coinbase.Commerce.Clients.csproj" />
+    <ProjectReference Include="..\Coinbase.Commerce.Models\Coinbase.Commerce.Models.csproj" />
+  </ItemGroup>
+
+</Project>

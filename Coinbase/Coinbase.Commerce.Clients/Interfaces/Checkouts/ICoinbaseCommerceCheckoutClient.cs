@@ -1,34 +1,65 @@
 ﻿using Coinbase.Commerce.Models.Models.Checkouts;
+using Coinbase.Commerce.Models.Models.Queries;
 using Refit;
 
 namespace Coinbase.Commerce.Clients.Interfaces.Checkouts;
 
-public interface ICoinbaseCommerceCheckoutClient : ICoinbaseCommerceApi<ApiResponse<CoinbaseCommerceCheckoutResponse>>
+public interface ICoinbaseCommerceCheckoutClient
 {
     /// <summary>
-    ///     Create and customize a Coinbase Commerce-hosted payment (checkout) page
+    ///     Retrieves a Coinbase Commerce-hosted payment (checkout) page asynchronously by its ID.
     /// </summary>
-    /// <param name="transactionType">Charge, checkout, invoice or event. Helps set correct URL</param>
-    /// <param name="request">The request</param>
-    /// <returns>Details of the created checkout</returns>
+    /// <param name="checkoutId">The ID of the checkout page to retrieve.</param>
+    /// <returns>A task representing the asynchronous operation, returning an ApiResponse with the retrieved checkout data.</returns>
+    [Get("/checkouts/{checkoutId}")]
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<CheckoutData>>> ShowCheckoutAsync(string checkoutId);
+
+    /// <summary>
+    ///     Retrieves a list of all Coinbase Commerce-hosted payment (checkout) pages asynchronously.
+    /// </summary>
+    /// <returns>A task representing the asynchronous operation, returning an ApiResponse with the list of checkout pages.</returns>
+    [Get("/checkouts/")]
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<List<CheckoutData>>>> ListCheckoutsAsync(
+        [Query] CheckoutQueryOptions? options = null);
+
+    /// <summary>
+    ///     Creates and customizes a Coinbase Commerce-hosted payment (checkout) page asynchronously.
+    /// </summary>
+    /// <param name="transactionType">
+    ///     The type of transaction (Charge, Checkout, Invoice, or Event) to help set the correct
+    ///     URL.
+    /// </param>
+    /// <param name="request">The request object containing the necessary information to create the checkout page.</param>
+    /// <returns>
+    ///     A task representing the asynchronous operation, returning an ApiResponse with the details of the created
+    ///     checkout page.
+    /// </returns>
     [Headers("Content-Type: application/json")]
     [Post("/checkouts")]
-    Task<ApiResponse<CoinbaseCommerceCheckoutResponse>> CreateCheckoutAsync(string transactionType,
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<CheckoutData>>> CreateCheckoutAsync(
         [Body] CoinbaseCommerceCheckoutRequest request);
 
     /// <summary>
-    ///     Update a Coinbase Commerce-hosted payment (checkout) page
+    ///     Updates a Coinbase Commerce-hosted payment (checkout) page asynchronously.
     /// </summary>
-    /// <param name="checkoutId">The checkout id</param>
-    /// <returns>Details of the updated checkout</returns>
+    /// <param name="checkoutId">The ID of the checkout page to update.</param>
+    /// <param name="request">The request object containing the updated information for the checkout page.</param>
+    /// <returns>
+    ///     A task representing the asynchronous operation, returning an ApiResponse with the details of the updated
+    ///     checkout page.
+    /// </returns>
     [Put("/checkouts/{checkoutId}")]
-    Task<ApiResponse<CoinbaseCommerceCheckoutResponse>> UpdateCheckoutAsync(string checkoutId);
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<CheckoutData>>> UpdateCheckoutAsync(string checkoutId,
+        [Body] CoinbaseCommerceCheckoutRequest request);
 
     /// <summary>
-    ///     Delete a Coinbase Commerce-hosted payment (checkout) page
+    ///     Deletes a Coinbase Commerce-hosted payment (checkout) page asynchronously.
     /// </summary>
-    /// <param name="checkoutId">The checkout id</param>
-    /// <returns>Details of the deleted checkout</returns>
+    /// <param name="checkoutId">The ID of the checkout page to delete.</param>
+    /// <returns>
+    ///     A task representing the asynchronous operation, returning an IApiResponse indicating the success or failure of
+    ///     the deletion.
+    /// </returns>
     [Delete("/checkouts/{checkoutId}")]
     Task<IApiResponse> DeleteCheckoutAsync(string checkoutId);
 }

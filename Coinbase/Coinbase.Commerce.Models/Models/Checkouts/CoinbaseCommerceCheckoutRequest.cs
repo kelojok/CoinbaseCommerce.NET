@@ -1,17 +1,21 @@
-﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models.Checkouts;
 
-public record CoinbaseCommerceCheckoutRequest(
-    [property: JsonProperty("name")] [property: JsonPropertyName("name")]
-    string Name,
-    [property: JsonProperty("description")] [property: JsonPropertyName("description")]
-    string Description,
-    [property: JsonProperty("requested_info")] [property: JsonPropertyName("requested_info")]
-    IReadOnlyList<string>? RequestedInfo,
-    [property: JsonProperty("pricing_type")] [property: JsonPropertyName("pricing_type")]
-    string PricingType,
-    [property: JsonProperty("local_price")] [property: JsonPropertyName("local_price")]
-    LocalPrice LocalPrice
-);
+public class CoinbaseCommerceCheckoutRequest
+{
+    [JsonProperty("name")]
+    public string Name { get; set; }
+
+    [JsonProperty("description")]
+    public string Description { get; set; }
+
+    [JsonProperty("requested_info")]
+    public IReadOnlyList<string>? RequestedInfo { get; set; }
+
+    [JsonProperty("pricing_type")]
+    public PricingType PricingType { get; set; }
+
+    [JsonProperty("local_price")]
+    public LocalPrice LocalPrice { get; set; }
+}
