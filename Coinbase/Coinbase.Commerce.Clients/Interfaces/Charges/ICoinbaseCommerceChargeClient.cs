@@ -1,5 +1,4 @@
-﻿using Coinbase.Commerce.Models.Models;
-using Coinbase.Commerce.Models.Models.Charges;
+﻿using Coinbase.Commerce.Models.Models.Charges;
 using Coinbase.Commerce.Models.Models.Queries;
 using Refit;
 

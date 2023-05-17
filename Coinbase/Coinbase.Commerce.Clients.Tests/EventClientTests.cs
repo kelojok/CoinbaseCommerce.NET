@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using Coinbase.Commerce.Api;
-using Coinbase.Commerce.Clients.Interfaces.Charges;
 using Coinbase.Commerce.Clients.Interfaces.Events;
 using Coinbase.Commerce.Models.Models.Queries;
 using Microsoft.AspNetCore.Mvc.Testing;

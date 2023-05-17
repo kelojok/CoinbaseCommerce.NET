@@ -1,31 +1,31 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models.Rates;
 
 public record BaseExchangeRates(
-    [property: JsonPropertyName("ETH-USD")] string ETHUSD,
+    [property: JsonProperty("ETH-USD")] string ETHUSD,
 
-    [property: JsonPropertyName("BTC-USD")] string BTCUSD,
+    [property: JsonProperty("BTC-USD")] string BTCUSD,
 
-    [property: JsonPropertyName("LTC-USD")] string LTCUSD,
+    [property: JsonProperty("LTC-USD")] string LTCUSD,
 
-    [property: JsonPropertyName("DOGE-USD")] string DOGEUSD,
+    [property: JsonProperty("DOGE-USD")] string DOGEUSD,
 
-    [property: JsonPropertyName("BCH-USD")] string BCHUSD,
+    [property: JsonProperty("BCH-USD")] string BCHUSD,
 
-    [property: JsonPropertyName("USDC-USD")] string USDCUSD,
+    [property: JsonProperty("USDC-USD")] string USDCUSD,
 
-    [property: JsonPropertyName("DAI-USD")] string DAIUSD,
+    [property: JsonProperty("DAI-USD")] string DAIUSD,
 
-    [property: JsonPropertyName("APE-USD")] string APEUSD,
+    [property: JsonProperty("APE-USD")] string APEUSD,
 
-    [property: JsonPropertyName("SHIB-USD")] string SHIBUSD,
+    [property: JsonProperty("SHIB-USD")] string SHIBUSD,
 
-    [property: JsonPropertyName("USDT-USD")] string USDTUSD,
+    [property: JsonProperty("USDT-USD")] string USDTUSD,
 
-    [property: JsonPropertyName("PMATIC-USD")] string PMATICUSD,
+    [property: JsonProperty("PMATIC-USD")] string PMATICUSD,
 
-    [property: JsonPropertyName("PUSDC-USD")] string PUSDCUSD,
+    [property: JsonProperty("PUSDC-USD")] string PUSDCUSD,
 
-    [property: JsonPropertyName("PWETH-USD")] string PWETHUSD
+    [property: JsonProperty("PWETH-USD")] string PWETHUSD
 );
