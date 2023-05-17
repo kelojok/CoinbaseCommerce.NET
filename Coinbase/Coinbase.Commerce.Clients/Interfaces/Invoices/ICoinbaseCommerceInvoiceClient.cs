@@ -1,8 +1,6 @@
-﻿using Coinbase.Commerce.Models.Models;
-using Coinbase.Commerce.Models.Models.Invoices;
+﻿using Coinbase.Commerce.Models.Models.Invoices;
 using Coinbase.Commerce.Models.Models.Queries;
 using Refit;
-using System.Runtime.InteropServices;
 
 namespace Coinbase.Commerce.Clients.Interfaces.Invoices;
 

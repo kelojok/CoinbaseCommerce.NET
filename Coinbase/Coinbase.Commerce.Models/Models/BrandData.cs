@@ -1,13 +1,13 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models;
 
 public record BrandData(
-    [property: JsonPropertyName("brand_color")] string BrandColor,
+    [property: JsonProperty("brand_color")] string BrandColor,
 
-    [property: JsonPropertyName("brand_logo_url")] string BrandLogoUrl,
+    [property: JsonProperty("brand_logo_url")] string BrandLogoUrl,
 
-    [property: JsonPropertyName("coinbase_managed_merchant")] bool? CoinbaseManagedMerchant
+    [property: JsonProperty("coinbase_managed_merchant")] bool? CoinbaseManagedMerchant
 )
 {
     public BrandData() : this("", "", null) { }

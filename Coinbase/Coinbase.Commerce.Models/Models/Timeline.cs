@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
-using Coinbase.Commerce.Models.Models.Statuses;
+﻿using Coinbase.Commerce.Models.Models.Statuses;
+using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models;
 
 public record Timeline(
-    [property: JsonPropertyName("status")] TransactionStatuses Status,
+    [property: JsonProperty("status")] TransactionStatuses Status,
 
-    [property: JsonPropertyName("time")] DateTime? Time
+    [property: JsonProperty("time")] DateTime? Time
 );

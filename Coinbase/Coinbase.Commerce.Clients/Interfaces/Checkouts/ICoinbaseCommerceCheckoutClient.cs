@@ -1,5 +1,4 @@
-﻿using Coinbase.Commerce.Models.Models;
-using Coinbase.Commerce.Models.Models.Checkouts;
+﻿using Coinbase.Commerce.Models.Models.Checkouts;
 using Coinbase.Commerce.Models.Models.Queries;
 using Refit;
 
@@ -20,7 +19,7 @@ public interface ICoinbaseCommerceCheckoutClient
     /// </summary>
     /// <returns></returns>
     [Get("/checkouts/")]
-    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<List<CheckoutData>>>> ListCheckoutsAsync([Query] BaseQueryOptions? options = null);
+    Task<ApiResponse<CoinbaseCommerceCheckoutResponse<List<CheckoutData>>>> ListCheckoutsAsync([Query] CheckoutQueryOptions? options = null);
 
 
     /// <summary>

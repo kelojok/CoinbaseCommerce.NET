@@ -1,30 +1,30 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models.Invoices
 {
     public record InvoiceData(
-        [property: JsonPropertyName("business_name")] string BusinessName,
+        [property: JsonProperty("business_name")] string BusinessName,
 
-        [property: JsonPropertyName("code")] string Code,
+        [property: JsonProperty("code")] string Code,
 
-        [property: JsonPropertyName("created_at")] DateTime? CreatedAt,
+        [property: JsonProperty("created_at")] DateTime? CreatedAt,
 
-        [property: JsonPropertyName("customer_email")] string CustomerEmail,
+        [property: JsonProperty("customer_email")] string CustomerEmail,
 
-        [property: JsonPropertyName("customer_name")] string CustomerName,
+        [property: JsonProperty("customer_name")] string CustomerName,
 
-        [property: JsonPropertyName("hosted_url")] string HostedUrl,
+        [property: JsonProperty("hosted_url")] string HostedUrl,
 
-        [property: JsonPropertyName("id")] string Id,
+        [property: JsonProperty("id")] string Id,
 
-        [property: JsonPropertyName("local_price")] LocalPrice LocalPrice,
+        [property: JsonProperty("local_price")] LocalPrice LocalPrice,
 
-        [property: JsonPropertyName("memo")] string Memo,
+        [property: JsonProperty("memo")] string Memo,
 
-        [property: JsonPropertyName("resource")] string Resource,
+        [property: JsonProperty("resource")] string Resource,
 
-        [property: JsonPropertyName("status")] string Status,
+        [property: JsonProperty("status")] string Status,
 
-        [property: JsonPropertyName("updated_at")] DateTime? UpdatedAt
+        [property: JsonProperty("updated_at")] DateTime? UpdatedAt
     );
 }

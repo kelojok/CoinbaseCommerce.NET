@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
-using Refit;
+﻿using Refit;
 
 namespace Coinbase.Commerce.Models.Models.Queries;
 

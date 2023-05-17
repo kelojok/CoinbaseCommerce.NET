@@ -1,16 +1,15 @@
-﻿using System.Text.Json.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models.Invoices;
 
 public record CoinbaseCommerceInvoiceRequest(
-    [property: JsonPropertyName("business_name")] string BusinessName,
+    [property: JsonProperty("business_name")] string BusinessName,
 
-    [property: JsonPropertyName("customer_email")] string CustomerEmail,
+    [property: JsonProperty("customer_email")] string CustomerEmail,
 
-    [property: JsonPropertyName("customer_name")] string CustomerName,
+    [property: JsonProperty("customer_name")] string CustomerName,
 
-    [property: JsonPropertyName("memo")] string Memo,
+    [property: JsonProperty("memo")] string Memo,
 
-    [property: JsonPropertyName("local_price")] LocalPrice LocalPrice
+    [property: JsonProperty("local_price")] LocalPrice LocalPrice
 );

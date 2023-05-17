@@ -3,6 +3,7 @@ using Coinbase.Commerce.Api;
 using Coinbase.Commerce.Clients.Interfaces.Checkouts;
 using Coinbase.Commerce.Models.Models;
 using Coinbase.Commerce.Models.Models.Checkouts;
+using Coinbase.Commerce.Models.Models.Queries;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -80,7 +81,9 @@ public class CheckoutClientTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task ListCheckoutsAsync_ReturnsSuccessfulResponseWithCheckoutsInfo()
     {
-        var listCheckoutResponse = _checkoutClient.ListCheckoutsAsync();
+        var listCheckoutResponse = await _checkoutClient.ListCheckoutsAsync();
+        Assert.True(listCheckoutResponse.IsSuccessStatusCode);
+        Assert.NotNull(listCheckoutResponse.Content?.Data);
     }
 
     private static CoinbaseCommerceCheckoutRequest CreateDummyCheckoutRequest()
@@ -89,7 +92,7 @@ public class CheckoutClientTests : IClassFixture<WebApplicationFactory<Program>>
             "Checkout name",
             "Checkout description",
             new List<string> { "name" },
-            "fixed_price",
+            PricingType.FixedPrice,
             new LocalPrice("USD", "150.00"));
     }
 
@@ -99,7 +102,7 @@ public class CheckoutClientTests : IClassFixture<WebApplicationFactory<Program>>
             "Checkout name",
             "Checkout description",
             new List<string> { "name" },
-            "errorprice",
+            PricingType.None,
             new LocalPrice("USD", "150.00"));
     }
 }
