@@ -1,64 +1,64 @@
-﻿using System.Text.Json.Serialization;
-using Coinbase.Commerce.Models.Models.Rates;
+﻿using Coinbase.Commerce.Models.Models.Rates;
 using Coinbase.Commerce.Models.Models.Thresholds;
+using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models.Charges
 {
 
     public record ChargeData(
-        [property: JsonPropertyName("addresses")] Addresses Addresses,
+        [property: JsonProperty("addresses")] Addresses Addresses,
 
-        [property: JsonPropertyName("cancel_url")] string CancelUrl,
+        [property: JsonProperty("cancel_url")] string CancelUrl,
 
-        [property: JsonPropertyName("code")] string Code,
+        [property: JsonProperty("code")] string Code,
 
-        [property: JsonPropertyName("created_at")] DateTime? CreatedAt,
+        [property: JsonProperty("created_at")] DateTime? CreatedAt,
 
-        [property: JsonPropertyName("description")] string Description,
+        [property: JsonProperty("description")] string Description,
 
-        [property: JsonPropertyName("exchange_rates")] ExchangeRates ExchangeRates,
+        [property: JsonProperty("exchange_rates")] ExchangeRates ExchangeRates,
 
-        [property: JsonPropertyName("expires_at")] DateTime? ExpiresAt,
+        [property: JsonProperty("expires_at")] DateTime? ExpiresAt,
 
-        [property: JsonPropertyName("fee_rate")] double? FeeRate,
+        [property: JsonProperty("fee_rate")] double? FeeRate,
 
-        [property: JsonPropertyName("fees_settled")] bool? FeesSettled,
+        [property: JsonProperty("fees_settled")] bool? FeesSettled,
 
-        [property: JsonPropertyName("hosted_url")] string HostedUrl,
+        [property: JsonProperty("hosted_url")] string HostedUrl,
 
-        [property: JsonPropertyName("id")] string Id,
+        [property: JsonProperty("id")] string Id,
 
-        [property: JsonPropertyName("local_exchange_rates")] LocalExchangeRates LocalExchangeRates,
+        [property: JsonProperty("local_exchange_rates")] LocalExchangeRates LocalExchangeRates,
 
-        [property: JsonPropertyName("logo_url")] string LogoUrl,
+        [property: JsonProperty("logo_url")] string LogoUrl,
 
-        [property: JsonPropertyName("metadata")] MetaData Metadata,
+        [property: JsonProperty("metadata")] MetaData Metadata,
 
-        [property: JsonPropertyName("name")] string Name,
+        [property: JsonProperty("name")] string Name,
 
-        [property: JsonPropertyName("offchain_eligible")] bool? OffchainEligible,
+        [property: JsonProperty("offchain_eligible")] bool? OffchainEligible,
 
-        [property: JsonPropertyName("organization_name")] string OrganizationName,
+        [property: JsonProperty("organization_name")] string OrganizationName,
 
-        [property: JsonPropertyName("payment_threshold")] PaymentThreshold PaymentThreshold,
+        [property: JsonProperty("payment_threshold")] PaymentThreshold PaymentThreshold,
 
-        [property: JsonPropertyName("payments")] IReadOnlyList<object> Payments,
+        [property: JsonProperty("payments")] IReadOnlyList<object> Payments,
 
-        [property: JsonPropertyName("pricing")] Pricing Pricing,
+        [property: JsonProperty("pricing")] Pricing Pricing,
 
-        [property: JsonPropertyName("pricing_type")] PricingType PricingType,
+        [property: JsonProperty("pricing_type")] PricingType PricingType,
 
-        [property: JsonPropertyName("pwcb_only")] bool? PwcbOnly,
+        [property: JsonProperty("pwcb_only")] bool? PwcbOnly,
 
-        [property: JsonPropertyName("redirect_url")] string RedirectUrl,
+        [property: JsonProperty("redirect_url")] string RedirectUrl,
 
-        [property: JsonPropertyName("resource")] string Resource,
+        [property: JsonProperty("resource")] string Resource,
 
-        [property: JsonPropertyName("support_email")] string SupportEmail,
+        [property: JsonProperty("support_email")] string SupportEmail,
 
-        [property: JsonPropertyName("timeline")] IReadOnlyList<Timeline> Timeline,
+        [property: JsonProperty("timeline")] IReadOnlyList<Timeline> Timeline,
 
-        [property: JsonPropertyName("utxo")] bool? Utxo
+        [property: JsonProperty("utxo")] bool? Utxo
     ) : BrandData;
 
 }

@@ -6,31 +6,31 @@ using Newtonsoft.Json;
 namespace Coinbase.Commerce.Models.Models
 {
     public record Addresses(
-        [property: JsonPropertyName("polygon")] string Polygon,
+        [property: JsonProperty("polygon")] string Polygon,
 
-        [property: JsonPropertyName("pusdc")] string Pusdc,
+        [property: JsonProperty("pusdc")] string Pusdc,
 
-        [property: JsonPropertyName("pweth")] string Pweth,
+        [property: JsonProperty("pweth")] string Pweth,
 
-        [property: JsonPropertyName("ethereum")] string Ethereum,
+        [property: JsonProperty("ethereum")] string Ethereum,
 
-        [property: JsonPropertyName("usdc")] string Usdc,
+        [property: JsonProperty("usdc")] string Usdc,
 
-        [property: JsonPropertyName("dai")] string Dai,
+        [property: JsonProperty("dai")] string Dai,
 
-        [property: JsonPropertyName("apecoin")] string Apecoin,
+        [property: JsonProperty("apecoin")] string Apecoin,
 
-        [property: JsonPropertyName("shibainu")] string Shibainu,
+        [property: JsonProperty("shibainu")] string Shibainu,
 
-        [property: JsonPropertyName("tether")] string Tether,
+        [property: JsonProperty("tether")] string Tether,
 
-        [property: JsonPropertyName("bitcoincash")] string Bitcoincash,
+        [property: JsonProperty("bitcoincash")] string Bitcoincash,
 
-        [property: JsonPropertyName("dogecoin")] string Dogecoin,
+        [property: JsonProperty("dogecoin")] string Dogecoin,
 
-        [property: JsonPropertyName("litecoin")] string Litecoin,
+        [property: JsonProperty("litecoin")] string Litecoin,
 
-        [property: JsonPropertyName("bitcoin")] string Bitcoin
+        [property: JsonProperty("bitcoin")] string Bitcoin
 
     );
 }

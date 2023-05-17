@@ -1,23 +1,24 @@
 ﻿using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models.Checkouts
 {
     public record CheckoutData(
-        [property: JsonPropertyName("description")] string Description,
+        [property: JsonProperty("description")] string Description,
 
-        [property: JsonPropertyName("id")] string Id,
+        [property: JsonProperty("id")] string Id,
 
-        [property: JsonPropertyName("local_price")] LocalPrice LocalPrice,
+        [property: JsonProperty("local_price")] LocalPrice LocalPrice,
 
-        [property: JsonPropertyName("name")] string Name,
+        [property: JsonProperty("name")] string Name,
 
-        [property: JsonPropertyName("organization_name")] string OrganizationName,
+        [property: JsonProperty("organization_name")] string OrganizationName,
 
-        [property: JsonPropertyName("pricing_type")] PricingType PricingType,
+        [property: JsonProperty("pricing_type")] PricingType PricingType,
 
-        [property: JsonPropertyName("requested_info")] IReadOnlyList<string> RequestedInfo,
+        [property: JsonProperty("requested_info")] IReadOnlyList<string> RequestedInfo,
 
-        [property: JsonPropertyName("resource")] string Resource
+        [property: JsonProperty("resource")] string Resource
     ) : BrandData;
 
 }

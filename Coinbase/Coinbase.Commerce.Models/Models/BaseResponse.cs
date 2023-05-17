@@ -1,10 +1,11 @@
 ﻿using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Coinbase.Commerce.Models.Models;
 
 public record BaseResponse<T>(
-    [property: JsonPropertyName("data")] T? Data,
+    [property: JsonProperty("data")] T? Data,
 
-    [property: JsonPropertyName("metadata")] MetaData Metadata,
+    [property: JsonProperty("metadata")] MetaData Metadata,
 
-    [property: JsonPropertyName("pagination")] Pagination? Pagination);
+    [property: JsonProperty("pagination")] Pagination? Pagination);
